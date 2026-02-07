@@ -72,7 +72,7 @@ app-root {
   --color-shadow-tertiary: rgb(196, 176, 122);
 
   /* Gaps */ 
-  --spacing: clamp(5px, 2vw, 25px);
+  --spacing: clamp(5px, 2vw, 20px);
 
   /* Padding */
   --padding-normal: 10px;

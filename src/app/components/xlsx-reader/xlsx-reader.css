@@ -23,6 +23,7 @@
 
 .drop-zone {
   aspect-ratio: 1 / 1; /* ratio width / height, so height will always be the same as width */
+  max-height: 450px; /* So we don't have a scroll view on small pc screen*/
   background-color: var(--color-primary);
   border-radius: 50%;
   padding: 20px;
