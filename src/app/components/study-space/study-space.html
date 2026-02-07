@@ -4,52 +4,47 @@
     @if(succeededWords === totalWords)
     {
         <section class="end-wrapper">
-            <app-studies-ended class="studies-ended-board" (restartClicked)="reset()" />
+            <app-studies-ended class="studies-ended-wrapper" (restartClicked)="reset()" />
         </section>
     }
     @else {
         <section class="study-board">
              
-                <div class="left-side-bar">
-                </div>
+            <article class="stats">
+                <p>Succeeded Words : {{succeededWords}}/{{totalWords}}</p>
+                <p>Forgot : {{forgotten}}</p>
+            </article>
             
-            <div class="study-card">
-                
-                @if(showFront)
-                {
-                    <app-card [isFront]="showFront">
-                        <app-study-content
-                            [headers]="frontColumns"
-                            [words]="cards"
-                            [index]="index">
-                        </app-study-content>
-                    </app-card>
-                }
-                @else 
-                {
-                    <app-card [isFront]="showFront">
-                        <app-study-content
-                            [headers]="backColumns"
-                            [words]="cards"
-                            [index]="index">
-                        </app-study-content>
-                    </app-card>
-                }
-                <section class="interaction">
-                    <div class="interaction-wrapper">
-                        <button class="action flip" (click)="onFlipCard()">Flip</button>
-                        <button class="action next" (click)="onNext()" [disabled]="!showActions">Next</button>
-                        <button class="action forgot" (click)="onForgot()" [disabled]="!showActions">Forgot</button>
-                    </div>
-                </section>
+            <div class="card-wrapper">
+                <div class="card-size">
+                    @if(showFront)
+                    {
+                        <app-card [isFront]="showFront">
+                            <app-study-content
+                                [headers]="frontColumns"
+                                [words]="cards"
+                                [index]="index">
+                            </app-study-content>
+                        </app-card>
+                    }
+                    @else 
+                    {
+                        <app-card [isFront]="showFront">
+                            <app-study-content
+                                [headers]="backColumns"
+                                [words]="cards"
+                                [index]="index">
+                            </app-study-content>
+                        </app-card>
+                    }
+                </div>
             </div>
             
-            <article class="side-bar">
-                <div class="stats">
-                    <h3>Succeeded Words : {{succeededWords}}/{{totalWords}}</h3>
-                    <h3>Forgot : {{forgotten}}</h3>
-                </div>
-            </article>
+            <section class="interaction">
+                <app-button type="primary" (click)="onFlipCard()">Flip</app-button>
+                <app-button type="secondary" (click)="onNext()" [disabled]="!showActions">Next</app-button>
+                <app-button type="secondary" (click)="onForgot()" [disabled]="!showActions">Forgot</app-button>
+            </section>
 
         </section>
     }

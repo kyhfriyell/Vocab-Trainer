@@ -1,7 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   margin: 0;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column; /* pages would not take the full scsreen size if not column */
+  min-height: 100dvh; /* mobile browsers have dynamic toolbar and vh is not always correct */
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: linear-gradient(to bottom, var(--color-bg-dark), var(--color-bg-light));
+    padding: 20px; /* So we avoid elements to touch the screen borders on mobile */
+    gap: var(--spacing); /* To always have gaps, even on small screens */
+
+    justify-content: space-around;
+    
 }
 
 @font-face {
@@ -37,6 +59,10 @@ html, body {
   /* Text */
   --color-text-muted: #808080;
   --color-text-black: black;
+  --font-size-normal-text: clamp(0.90rem, 1vw, 1.1rem); /* clamp auto calculates a value between (min, prefered, max) */
+  --font-size-bigger-text: clamp(1.1rem, 1.3vw, 1.35rem);
+  --font-size-h1: clamp(2rem, 3vw, 2.5rem);
+  --font-size-h3: clamp(1.4rem, 2vw, 1.9rem);
 
 
   /* Shadows */
@@ -44,10 +70,33 @@ html, body {
   --color-shadow-primary: rgb(63, 155, 124);
   --color-shadow-secondary: rgb(172, 100, 82);
   --color-shadow-tertiary: rgb(196, 176, 122);
+
+  /* Gaps */ 
+  --spacing: clamp(5px, 2vw, 25px);
+
+  /* Padding */
+  --padding-normal: 10px;
+  --padding-small: 5px;
 }
 
 p, h1, h2, h3, button, th, tr {
   font-family: "SilkScreen";
   color: var(--color-white);
-  
 }
+
+p {
+  font-size: var(--font-size-normal-text);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  text-align: center;
+  margin: 0px;
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  text-align: center;
+  margin: 0px;
+}
+

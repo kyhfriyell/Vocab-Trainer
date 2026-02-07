@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import * as XLSX from "xlsx";
 import { XlsxFile, XlsxSheet } from '../../models/xlsx-file.model';
 import { FileService } from '../../services/file-service';
+import { Button } from "../button/button";
 
 @Component({
   selector: 'app-xlsx-reader',
-  imports: [],
+  imports: [Button],
   templateUrl: './xlsx-reader.html',
   styleUrl: './xlsx-reader.css',
 })

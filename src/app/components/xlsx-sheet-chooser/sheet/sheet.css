@@ -2,17 +2,34 @@
     display: flex;
     padding: 10px 20px;
     align-items: center;
+    justify-content: space-between;
     background-color: var(--color-primary);
-    overflow: hidden;
+    transition: transform 0.2s ease;
+    box-shadow: 0px 4px 2px var(--color-shadow-primary);
+    border-radius: 4px;
+    min-height: 50px;
 }
 
+
+.sheet:hover {
+    transform: scale(1.02);
+}
+
+.sheet p {
+    margin: 0px;
+}
 
 .sheet.empty {
     background-color: var(--color-desactivated);
+    box-shadow: 0px 4px 2px var(--color-text-muted);
+}
+
+.sheet.empty:hover {
+    transform: none;
 }
 
 .name {
-    width: 80%;
+    
 }
 
 .sheet.empty .name, .sheet.empty .count {
@@ -21,5 +38,19 @@
 
 
 .count {
-
+    margin-right: 30px;
 }
+
+
+
+@media (max-width: 480px){
+    .count {
+        margin: 0px;
+    }
+}
+/* Break points :
+  480px -> small phones
+  768px → tablet
+  1024px → small desktop
+  1280px → large desktop
+*/

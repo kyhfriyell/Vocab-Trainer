@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { Card } from "../card/card";
 import { Headers } from "../card/headers/headers";
 import { signal } from '@angular/core';
+import { Button } from "../button/button";
 
 @Component({
   selector: 'app-xlsx-sheet-infos',
-  imports: [Card, Headers],
+  imports: [Card, Headers, Button],
   templateUrl: './xlsx-sheet-infos.html',
   styleUrl: './xlsx-sheet-infos.css',
 })
@@ -16,6 +17,7 @@ export class XlsxSheetInfos implements OnInit {
   private router = inject(Router);
   private fileService = inject(FileService);
   private headers: string[] = [];
+  private showingFront = true;
   
   backColumns = signal<string[]>([]);
   frontColumns = signal<string[]>([]);
@@ -48,32 +50,34 @@ export class XlsxSheetInfos implements OnInit {
     return this.frontColumns().length > 0 && this.backColumns().length > 0;
   }
 
-  toggleFrontHeader(header: string, checked: boolean) {
-    if (checked) {
+  get isShowingFront() {
+    return this.showingFront;
+  }
+
+  switchSide() {
+    this.showingFront = !this.showingFront;
+  }
+
+  toggleFrontHeader(header: string) {
+     const alreadyChecked = this.frontColumns().find(e => e === header) ? true : false;
+    if (!alreadyChecked) {
       this.frontColumns.update((h: string[]) => [...h, header])
     } else {
       this.frontColumns.set(this.frontColumns().filter((h: string) => h !== header));
     }
   }
 
-  toggleFrontHeaderFromName(header: string) {
-    const checked = this.frontColumns().find(e => e === header) ? true : false;
-    this.toggleFrontHeader(header, !checked);
-  }
 
-  toggleBackHeader(header: string, checked: boolean) {
-    if (checked) {
+  toggleBackHeader(header: string) {
+    const alreadyChecked = this.backColumns().find(e => e === header) ? true : false;
+    if (!alreadyChecked) {
       this.backColumns.update((h: string[]) => [...h, header])
     } else {
       this.backColumns.set(this.backColumns().filter((h: string) => h !== header));
     }
   }
 
-  toggleBackHeaderFromName(header: string) {
-    const checked = this.backColumns().find(e => e === header) ? true : false;
-    this.toggleBackHeader(header, !checked);
-  }
-
+ 
   isSelected(header: string, collection: string[]): boolean {
     return collection.includes(header);
   }

@@ -1,75 +1,45 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--color-bg-dark), var(--color-bg-light));
 }
 
 .header {
-    background-color: var(--color-primary);
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--padding-normal);
 }
 
 .header h1 {
-    width: 50%;
     text-align: center;
+    margin: 10px;
 }
 
-.header-right {
-    display: flex;
-    width: 50%;
+.header .header-actions {
+  display: flex;
+  gap: var(--spacing);
 }
 
-.header-right h3 {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1 1 0;
+/* ::ng-deep to override the button component css properties */
+::ng-deep .custom-button button {
+  width: min(45dvw, 180px);
 }
 
-.header-right button {
-  margin: 20px;
-  box-sizing: border-box;
-  font-size: 14px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: var(--color-secondary);
-  color: var(--color-white);
-  box-shadow: 0px 3px 2px var(--color-shadow-secondary);
-  transition: transform 0.2s ease;
+
+.cards-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
 }
 
-.header-right button:hover {
-  background-color: var(--color-secondary-light);
-  color: var(--color-white);
-  box-shadow: 0px 3px 2px var(--color-secondary);
-  transform: scale(1.04);
-}
-
-.header-right button:disabled {
-  background-color: var(--color-desactivated);
-  color: var(--color-text-muted);
-  box-shadow: 0px 3px 2px var(--color-text-muted);
-  transform: none;
-}
-
-.cards {
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 0;
+.cards-area h3 {
+  margin: 0px;
 }
 
 .front-view {
     display: flex;
     flex-direction: column;
-    flex: 1 1 0;
-    align-items: center;
-    gap: 20px;
-    min-width: 0px;
-    min-height: 0px;
+    flex: 1;
+    gap: var(--spacing);
 }
 
 .back-view {
@@ -77,83 +47,78 @@
     flex-direction: column;
     flex: 1 1 0;
     align-items: center;
-    gap: 20px;
+    gap: var(--spacing);
     min-width: 0px;
     min-height: 0px;
 }
 
 
-.headers-table-wrapper {
-  padding: 0 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.headers-table {
-  overflow-x: auto;
-  width: 100%;
-  padding-bottom: 12px;
-  border: 2px solid var(--color-secondary); 
+.columns-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 0px solid var(--color-secondary); 
+  box-shadow: var(--color-shadow) 0px 2px 2px 3px inset;
   border-radius: 4px;
-  
+  gap: var(--spacing);
+  padding: 10px;
+
+  max-height: 30dvh;
+  overflow-y: auto;
 }
 
-th,
-td {
-  padding: 5px;
-  white-space: nowrap;
-  text-align: center;
+.column-element {
+  border: 1px solid var(--color-secondary); 
+  box-shadow: 0px 3px 2px var(--color-shadow);
+  padding: var(--padding-normal);
+  gap: var(--spacing);
+  border-radius: 4px;
+  display: flex;
+  cursor: pointer;
 }
 
-td {
-  vertical-align: middle;
+.column-element:hover {
+  background-color: var(--color-secondary);
 }
 
 .selected {
   background-color: var(--color-secondary);
-}
-
-table {
-     border-collapse: collapse;
-     width: max-content;
+  /*box-shadow: 0px 3px 2px var(--color-shadow-secondary);*/
+  border: 0px solid var(--color-secondary); 
+  box-shadow: 0px 3px 2px var(--color-shadow);
   
 }
 
-.card-comp {
+.selected:hover {
+  background-color: var(--color-secondary-light);
+}
+
+.column-element p {
+  margin: 0px;
+}
+
+
+.card-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
+    flex-direction: column;
+    flex: 1 1 0;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 900px) {
-  .cards {
-    flex-direction: column;
-  }
+/* Break points :
+  480px -> small phones
+  768px → tablet
+  1024px → small desktop
+  1280px → large desktop
+*/
 
-  .front-view {
-    flex: none;
-  }
-
-  .back-view {
-    flex: none;
-  }
+@media (max-width: 1024px) {
+  
 
 }
 
-@media (max-width: 500px) {
-  .header {
-    flex-direction: column;
-  }
-
-  .header h1 {
-    width: 100%;
-  }
-
-  .header-right {
-    width: 100%;
+@media (max-width: 480px) {
+  .column-element {
+    padding: var(--padding-small);
   }
 }

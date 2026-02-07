@@ -1,15 +1,15 @@
 .card-value {
-    font-size: 1.3em;
+    font-size: var(--font-size-normal-text);
     text-align: center;
 }
 
 .first-card-value {
     font-weight: bold;
-    font-size: 2em;
+    font-size: var(--font-size-bigger-text);
     margin-bottom: 5px;
 }
 
 p {
-    margin: 0px;
+    margin: none;
     color: var(--color-text-black);
 }

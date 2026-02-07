@@ -11,13 +11,13 @@
     overflow: auto;
 }
 .card-value {
-    font-size: 1.3em;
+    font-size: var(--font-size-normal-text);
     text-align: center;
 }
 
 .first-card-value {
     font-weight: bold;
-    font-size: 1.6em;
+    font-size: var(--font-size-bigger-text);
     margin-bottom: 5px;
 }
 

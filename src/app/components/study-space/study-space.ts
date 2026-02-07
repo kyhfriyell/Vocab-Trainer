@@ -4,10 +4,11 @@ import { FileService } from '../../services/file-service';
 import { StudiesEnded } from "./studies-ended/studies-ended";
 import { Card } from "../card/card";
 import { StudyContent } from "../card/study-content/study-content";
+import { Button } from "../button/button";
 
 @Component({
   selector: 'app-study-space',
-  imports: [StudiesEnded, Card, StudyContent],
+  imports: [StudiesEnded, Card, StudyContent, Button],
   templateUrl: './study-space.html',
   styleUrl: './study-space.css',
 })
