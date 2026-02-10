@@ -40,3 +40,10 @@
   </article>
   
 </div>
+
+@if(showJumpBackDialog()) {
+  <app-jump-back-in-dialog
+    (confirmed)="jumpBack()"
+    (cancelled)="startWithNewFile()"
+  />
+}

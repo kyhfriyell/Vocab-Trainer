@@ -1,0 +1,89 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+/* Dark background */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+/* Dialog box */
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: linear-gradient(to bottom, var(--color-bg-dark), var(--color-bg-light));
+  padding: var(--padding-normal);
+  border-radius: 4px;
+  
+  width: clamp(320px, 90dvw, 700px); 
+  // 320px is the absolute minimum readable layout width, so it's fine to use as min width. 
+  // The min should be the smallest usable size, not the smallest size of screen
+  
+  max-height: 90dvh;
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+
+  box-shadow: 0px 5px 2px var(--color-shadow);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  gap: var(--spacing);
+}
+
+.colored-text {
+  font-size: 0.9em;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: var(--color-primary);
+  overflow: hidden;
+}
+
+/* Animated background */
+.colored-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-primary);
+  z-index: -1;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: reveal-bg 0.4s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* Text color transition */
+.colored-text {
+  animation: text-color 0.4s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* Animations */
+@keyframes reveal-bg {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes text-color {
+  to {
+    color: white;
+  }
+}

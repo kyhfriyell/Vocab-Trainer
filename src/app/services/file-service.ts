@@ -100,4 +100,11 @@ export class FileService {
     }
   }
 
+  public emptyFilefromStorage() {
+    this.xlsxFile = {fileName: '', sheets: []};
+    this.selectedSheet = {sheetName: '', entries: []};
+    this.saveFile();
+    this.saveSheet();
+  }
+
 }

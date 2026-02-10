@@ -1,23 +1,42 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import * as XLSX from "xlsx";
 import { XlsxFile, XlsxSheet } from '../../models/xlsx-file.model';
 import { FileService } from '../../services/file-service';
 import { Button } from "../button/button";
+import { JumpBackInDialog } from "../shared/jump-back-in-dialog/jump-back-in-dialog";
 
 @Component({
   selector: 'app-xlsx-reader',
-  imports: [Button],
+  imports: [Button, JumpBackInDialog],
   templateUrl: './xlsx-reader.html',
   styleUrl: './xlsx-reader.css',
 })
-export class XlsxReader {
-
+export class XlsxReader implements OnInit {
+  
   private router = inject(Router);
   private fileService = inject(FileService);
   private fileAsObject!: XlsxFile;
 
   public isDragOver = false;
+  public showJumpBackDialog = signal(false);
+
+  ngOnInit(): void {
+    if(this.fileService.file.fileName.length > 0){
+      this.showJumpBackDialog.set(true);
+    }
+  }
+
+  jumpBack() {
+    this.showJumpBackDialog.set(false);
+    this.router.navigate(['/sheet-chooser']);
+  }
+
+  startWithNewFile(){
+    this.showJumpBackDialog.set(false);
+    this.fileService.emptyFilefromStorage();
+  }
+
 
   onFileSelect(event: Event) {
     const input = event.target as HTMLInputElement;

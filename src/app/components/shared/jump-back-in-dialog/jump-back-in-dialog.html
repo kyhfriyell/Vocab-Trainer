@@ -1,0 +1,17 @@
+<div class="backdrop" (click)="cancel()"></div>
+
+<div class="dialog">
+  <h3>Saved file detected</h3>
+  <p>Last time you were working with <span class="colored-text">{{fileName()}}</span>, do you want to jump back in ?</p>
+  
+
+  <div class="actions">
+    <app-button type="secondary" (click)="cancel()">
+      no, upload new file
+    </app-button>
+
+    <app-button type="primary" (click)="confirm()">
+      Yes, let's keep going baby
+    </app-button>
+  </div>
+</div>

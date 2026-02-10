@@ -31,8 +31,8 @@ export class XlsxSheetInfos implements OnInit {
         rows.some(row => row[col] !== null && row[col] !== undefined) 
       );
 
-      this.backColumns.update((bc: string [])=>  [...this.fileService.backColumns]);
-      this.frontColumns.update((fc: string [])=>  [...this.fileService.frontColumns]);
+      this.backColumns.update((bc: string [])=>  [...this.fileService.backColumns.filter(h => this.headers.includes(h))]);
+      this.frontColumns.update((fc: string [])=>  [...this.fileService.frontColumns.filter(h => this.headers.includes(h))]);
   }
 
   get wordCount() 
