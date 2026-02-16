@@ -14,8 +14,6 @@
     gap: var(--spacing);
 }
 
-h1 {}
-
 .study-board {
     display: flex;
     flex-direction: column;
