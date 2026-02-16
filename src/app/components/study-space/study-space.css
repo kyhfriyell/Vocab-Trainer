@@ -14,16 +14,14 @@
     gap: var(--spacing);
 }
 
-h1 {
-    margin: 20px;
-}
+h1 {}
 
 .study-board {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 1;
-    gap: var(--spacing);
+    gap: var(--spacing-small-noclamp);
 }
 
 .stats {
@@ -54,7 +52,7 @@ h1 {
     display: flex;
     flex-direction: column;
     flex: 1;
-    max-height: 450px;
+    padding: 20px 0px;
 }
 
 .interaction {
@@ -99,7 +97,7 @@ h1 {
 */
 
 @media (max-width: 480px) {
-    .stats p {
-      /*  font-size: var(--font-size-normal-text);*/
-    }
+    
+    
+ 
 }
