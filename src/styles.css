@@ -74,6 +74,7 @@ app-root {
   /* Gaps */ 
   --spacing: clamp(5px, 2vw, 20px);
   --spacing-small: clamp(5px, 2vw, 10px);
+  --spacing-small-noclamp : 10px;
 
   /* Padding */
   --padding-normal: 10px;

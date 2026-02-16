@@ -11,18 +11,17 @@
     flex: 1;
     align-items: center;
     text-align: center;
-    gap: var(--spacing);
+    gap: var(--spacing-small-noclamp);
 }
 
 .header {
     display: flex;
     flex-direction: column;
-    padding: var(--padding-normal);
+    gap: var(--spacing);
 }
 
 .header h1 {
     text-align: center;
-    margin: 10px;
 }
 
 .header .header-actions {
