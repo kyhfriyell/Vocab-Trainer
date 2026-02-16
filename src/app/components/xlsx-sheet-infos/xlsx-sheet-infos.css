@@ -95,14 +95,14 @@
 
 .selected {
   background-color: var(--color-secondary);
-  /*box-shadow: 0px 3px 2px var(--color-shadow-secondary);*/
   border: 0px solid var(--color-secondary); 
   box-shadow: 0px 3px 2px var(--color-shadow);
-  
+  border: 1px solid var(--color-secondary); 
 }
 
 .selected:hover {
   background-color: var(--color-secondary-light);
+  border: 1px solid var(--color-secondary-light); 
 }
 
 .column-element p {
